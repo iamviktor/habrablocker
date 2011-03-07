@@ -1,0 +1,29 @@
+{
+ "name": "Habrablocker",
+ "version": "0.0.1",
+ "description": "Blocks time-wasting elements on http://habrahabr.ru",
+
+ "permissions": [
+  "tabs",
+  "http://habrahabr.ru/*"
+ ],
+
+ "page_action": {
+  "default_icon": "images/icon32.png",  
+  "default_title": "Habrablocker",
+  "default_popup": "popup.html"
+ },
+
+ "content_scripts": [
+   {
+     "matches": ["http://habrahabr.ru/*"],
+     "run_at": "document_end",
+     "js": ["js/content_script.js"],
+     "css": ["css/content.css"]
+   }
+  ],
+
+ "background_page": "background.html",
+
+ "options_page": "options.html"
+}
