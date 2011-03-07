@@ -1,6 +1,6 @@
 {
  "name": "Habrablocker",
- "version": "0.0.1",
+ "version": "0.1.0",
  "description": "Blocks time-wasting elements on http://habrahabr.ru",
 
  "permissions": [
@@ -19,6 +19,7 @@
      "matches": ["http://habrahabr.ru/*"],
      "run_at": "document_end",
      "js": ["js/content_script.js"],
+     "all_frames": true,
      "css": ["css/content.css"]
    }
   ],

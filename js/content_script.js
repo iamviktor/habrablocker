@@ -1,26 +1,43 @@
-var storageEnabled = window.localStorage != null;
-
 chrome.extension.sendRequest({"method": "init"}, processResponse);
-
 
 function processResponse(response)
 {
-    console.log(response);
-    if (response.response == 'done') {
+    //console.log(response);
+    if (response.response == 'done')
+    {
         processPage();
     }
-    else if (response.response == 'failed') {
+    else if (response.response == 'disabled')
+    {
+        var sb = document.getElementById('sidebar');
+        sb.style.display = 'block';
+        var comments = document.getElementById('comments');
+        comments.style.display = 'block';
+        return;
+    }
+    else if (response.response == 'failed')
+    {
         return;
     }
 }
 
-function processPage() {
+
+function processPage()
+{
     var sb = document.getElementById('sidebar');
-    //sb.style.display = 'block';
-    var len = sb.childNodes.length - 1;
-    for(var i = len; i > 0; i--)
+    sb.style.display = 'none';
+    //sb.innerHTML = "";
+}
+
+function processRequest(request, sender, sendResponse)
+{
+    switch (request.method)
     {
-        sb.removeChild(sb.childNodes[i]);
+        case 'pagereload':
+            document.location.reload(true);
+            break;
     }
     
 }
+
+chrome.extension.onRequest.addListener(processRequest);

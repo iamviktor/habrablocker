@@ -5,16 +5,28 @@
 -->
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="css/options.css" />
+        <link rel="stylesheet" href="css/options.css" />
+        <script src="js/popup.js"></script>
     </head>
     <body>
         <div class="main">
             <dl>
-                <dt><input type="radio" name="switch"><dt>
-                <dd>On<dd>
-                <dt><input type="radio" name="switch"><dt>
-                <dd>Off<dd>
+                <dd><input type="radio" name="switch" id="switch-on" onchange="switcher('on');" /><dd>
+                <dt><label>On</label><dt>
+                <dd><input type="radio" name="switch" id="switch-off" onchange="switcher('off');" /><dd>
+                <dt><label>Off</label><dt>
             <dl>
         </div>
+        <script>
+        if (readProperty('enabled', '1') == '1')
+        {
+            document.getElementById('switch-on').checked = true;
+            
+        }
+        else
+        {
+            document.getElementById('switch-off').checked = true;
+        }
+        </script>
     </body>
 </html>
