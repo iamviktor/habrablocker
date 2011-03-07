@@ -12,10 +12,12 @@
         <div class="main">
             <dl>
                 <dd><input type="radio" name="switch" id="switch-on" onchange="switcher('on');" /><dd>
-                <dt><label>On</label><dt>
-                <dd><input type="radio" name="switch" id="switch-off" onchange="switcher('off');" /><dd>
-                <dt><label>Off</label><dt>
+                <dt><label for="switch-on">On</label><dt>
+            </dt>
             <dl>
+                <dd><input type="radio" name="switch" id="switch-off" onchange="switcher('off');" /><dd>
+                <dt><label for="switch-off">Off</label><dt>
+            </dt>
         </div>
         <script>
         if (readProperty('enabled', '1') == '1')
